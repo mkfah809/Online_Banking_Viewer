@@ -20,6 +20,12 @@ public class TransactionRepository {
 	}
 	
 	public List<Transaction> findAll () {
+	
+		transactions.stream()
+		.map(output -> "ID: " + output.getId() 
+							  + ", Amount: " + output.getAmount() 
+							  + ", Type is: " + output.getType())
+		.forEach(System.out::println);
 		return transactions;
 	}
 
