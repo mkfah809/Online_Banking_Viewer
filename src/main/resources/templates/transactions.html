@@ -5,29 +5,26 @@
 	</head>
 	<body>
 		<h2>Transaction History</h2>
-		
+<!-- 	<form> -->
 		<table >
 		
 			<tr>
 				<th>ID</th>
 				<th>Date</th>
 				<th>Retailer</th>
-				<th>Funds In C</th>
-				<th>Funds Out D </th>
+				<th>Funds In </th>
+				<th>Funds Out </th>
 			</tr>
-			<!-- These 4 rows below are for demonstration purposes only
-			     You will need to edit the code below in order to make
-			     it dynamically list ALL 100 transactions from the Repo -->
+<!-- th:href="@{/transactions/{transactionId}(transactionId=${storedTransaction.id})}"  -->
 			<tr th:each="storedTransaction : ${transactions}" >
-				<td><a th:href="@{/transactions/{transactionId(transactionId=${storedTransaction.id})}}">[[${storedTransaction.id}]]</a></td>
+				<td><a th:href="@{/transactions/{transactionId}(transactionId=${storedTransaction.id})}" target="_new">[[${storedTransaction.id}]]</a></td>
 				<td th:inline ="text">[[${storedTransaction.date}]]</td>
 				<td th:inline ="text">[[${storedTransaction.retailer}]]</td>
 				<td th:utext="${storedTransaction.type == 'C'} ? ${storedTransaction.amount} : ${null}"></td>
-				<td th:utext="${storedTransaction.type == 'D'} ? ${storedTransaction.amount} : ${null}"></td>
-				
+				<td th:utext="${storedTransaction.type == 'D'} ? ${storedTransaction.amount} : ${null}"></td>	
 			</tr>
-			
 		</table>
+
 		
 	</body>
 </html>
