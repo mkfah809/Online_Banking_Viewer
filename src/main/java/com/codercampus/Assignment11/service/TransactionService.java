@@ -25,9 +25,9 @@ public class TransactionService {
 	}
 	
 
-	public Transaction findById(Transaction transaction, Long transactionId) {
+	public Transaction findById( Long transactionId) {
 		
-		return transactionRepo.findById(transaction, transactionId);
+		return transactionRepo.findById(transactionId);
 	}
 
 //	Optional<Transaction> sortedDates = transactionRepo.findAll().stream()

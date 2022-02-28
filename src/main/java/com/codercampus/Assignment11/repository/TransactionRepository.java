@@ -28,8 +28,7 @@ public class TransactionRepository {
 		return transactions;
 	}
 
-	public Transaction findById(Transaction transaction, long transactionId) {	
-		System.out.println(transaction.getId() + transactionId);
+	public Transaction findById(long transactionId) {	
 		return transactions.get((int) transactionId);
 	}
 

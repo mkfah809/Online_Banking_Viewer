@@ -26,10 +26,10 @@ public class TransactionController {
 
 	
 	@GetMapping("/transactions/{transactionId}")
-	public String findById(@PathVariable("transactionId") long transactionId, ModelMap model, Transaction transaction) {
+	public String findById(@PathVariable("transactionId") long transactionId, ModelMap model) {
 		
 	
-		 transaction	= transactionService.findById(transaction,transactionId);
+		Transaction transaction	= transactionService.findById(transactionId);
 		System.out.println("loading ID from object: "+ transaction.getId());
 		System.out.println("loading ID from Param: "+ transactionId);
 		
