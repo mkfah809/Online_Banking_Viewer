@@ -4,11 +4,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
@@ -17,26 +14,32 @@ import com.codercampus.Assignment11.domain.Transaction;
 @Repository
 public class TransactionRepository {
 	private List<Transaction> transactions = new ArrayList<>(100);
-//	private Map<Long, Transaction> transactions = new HashMap<>(100); 
+
 	public TransactionRepository() {
 		super();
 		populateData();
 	}
 
 	public List<Transaction> findAll() {
-
+		Collections.sort(transactions);
 		return transactions;
 	}
 
-	public Transaction findById(long transactionId) {	
-		return transactions.get((int) transactionId);
+	// return transaction.getId().equals(transactionId) ? transaction : null;
+	public Transaction findById(long transactionId) {
+		for (Transaction transaction : transactions) {
+			if (transaction.getId().equals(transactionId)) {
+				return transaction;
+			}
+		}
+		return null;
 	}
 
 	@SuppressWarnings("unchecked")
 	private void populateData() {
 		try (FileInputStream fileInputStream = new FileInputStream("transactions.txt");
 				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);) {
-		this.transactions = (List<Transaction>) objectInputStream.readObject();
+			this.transactions = (List<Transaction>) objectInputStream.readObject();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}

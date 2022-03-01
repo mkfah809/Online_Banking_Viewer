@@ -18,26 +18,16 @@ public class TransactionController {
 
 	@GetMapping("/transactions")
 	public String findAll(ModelMap model) {
-		List<Transaction> transactions =  transactionService.findAll();
-		
+		List<Transaction> transactions = transactionService.findAll();
 		model.put("transactions", transactions);
 		return "transactions";
 	}
 
-	
 	@GetMapping("/transactions/{transactionId}")
 	public String findById(@PathVariable("transactionId") long transactionId, ModelMap model) {
-		
-	
-		Transaction transaction	= transactionService.findById(transactionId);
-		System.out.println("loading ID from object: "+ transaction.getId());
-		System.out.println("loading ID from Param: "+ transactionId);
-		
+		Transaction transaction = transactionService.findById(transactionId);
 		model.put("transaction", transaction);
 		return "singleTransaction";
 	}
-	
 
-	
-	
 }

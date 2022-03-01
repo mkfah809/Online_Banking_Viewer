@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<h2>Transaction History</h2>
-<!-- 	<form> -->
+
 		<table >
 		
 			<tr>
@@ -15,7 +15,6 @@
 				<th>Funds In </th>
 				<th>Funds Out </th>
 			</tr>
-<!-- th:href="@{/transactions/{transactionId}(transactionId=${storedTransaction.id})}"  -->
 			<tr th:each="storedTransaction : ${transactions}" >
 				<td><a th:href="@{/transactions/{transactionId}(transactionId=${storedTransaction.id})}" target="_new">[[${storedTransaction.id}]]</a></td>
 				<td th:inline ="text">[[${storedTransaction.date}]]</td>

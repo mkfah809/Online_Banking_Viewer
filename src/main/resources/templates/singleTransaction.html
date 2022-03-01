@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Transaction ID</title>
-</head>
-<body>
-	<p> Transaction ID [[${transaction.id}]]</p>
-</body>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Transaction ID</title>
+	</head>
+	<body>
+	
+		<h1 th:inline ="text"> Transaction ID: [[${transaction.id}]] 
+			<span th:utext="${transaction.type} == 'C' ? '(Credit)' : '(Debit)'"> </span>		
+		</h1>
+		<div> Date: [[${transaction.date}]] </div> 
+		<div> Amount: [[${transaction.amount}]] </div> 
+		<div> Description: [[${transaction.description}]]</div>
+		<div> <a href="/transactions"> back </a></div>
+	</body>
 </html>
