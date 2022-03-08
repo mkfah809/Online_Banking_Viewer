@@ -10,7 +10,10 @@
 			<span th:utext="${transaction.type} == 'C' ? '(Credit)' : '(Debit)'"> </span>		
 		</h1>
 		<div> Date: [[${transaction.date}]] </div> 
-		<div> Amount: [[${transaction.amount}]] </div> 
+	
+		<div> Amount: 
+			<span th:utext="${transaction.type} == 'C' ? ${-transaction.amount} : ${transaction.amount}">[[${transaction.amount}]]</span>
+		</div> 
 		<div> Description: [[${transaction.description}]]</div>
 		<div> <a href="/transactions"> back </a></div>
 	</body>

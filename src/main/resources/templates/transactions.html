@@ -19,8 +19,8 @@
 				<td><a th:href="@{/transactions/{transactionId}(transactionId=${storedTransaction.id})}" target="_new">[[${storedTransaction.id}]]</a></td>
 				<td th:inline ="text">[[${storedTransaction.date}]]</td>
 				<td th:inline ="text">[[${storedTransaction.retailer}]]</td>
-				<td th:utext="${storedTransaction.type == 'C'} ? ${storedTransaction.amount} : ${null}"></td>
-				<td th:utext="${storedTransaction.type == 'D'} ? ${storedTransaction.amount} : ${null}"></td>	
+				<td th:text="${storedTransaction.type == 'C'} ? ${storedTransaction.amount} : ${null}"></td>
+				<td th:text="${storedTransaction.type == 'D'} ? ${storedTransaction.amount} : ${null}"></td>	
 			</tr>
 		</table>
 
